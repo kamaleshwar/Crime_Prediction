@@ -3,15 +3,17 @@ import csv
 import shutil
 source_dir = 'Sorted_data_set'
 target_dir = 'Discretized_data_set'
+path_sep = os.path.sep
+
 
 def Discretize():
     files = os.listdir(source_dir)
     for file in files:
-        fr = open(source_dir+"\\"+file,"rb")
+        fr = open(source_dir+path_sep+file,"rb")
         read = csv.reader(fr)
         if not os.path.isdir(target_dir):
             os.mkdir(target_dir)
-        fw = open(target_dir+"\\"+file,"ab")
+        fw = open(target_dir+path_sep+file,"ab")
         write = csv.writer(fw)
         for row in read:
             copy = []
