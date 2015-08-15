@@ -10,7 +10,7 @@ import shutil
 
 files=[]
 
-files=glob.glob("Final_data_set/*.xlsx")
+files=glob.glob("Final_data_set\*.xlsx")
 accuracy=0
 precision=0
 recall=0
@@ -229,5 +229,5 @@ getPrediction()
 print "Prediction completed"
 
 #print "Calculating accuracy precision details..."
-#findPrediction()
+findPrediction()
 
