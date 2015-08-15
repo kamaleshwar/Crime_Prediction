@@ -13,6 +13,7 @@ mymap = pygmaps.maps(41.8369,-87.6847, 12)
 wb = load_workbook(source)
 ws = wb.active
 max_rows = ws.get_highest_row()
+path_sep = os.path.sep
 
 def fill_list():
     result = []
@@ -32,10 +33,9 @@ def get_blocks():
     for block in result:
         add_point(float(block[0]),float(block[1]))
 
-
 def draw():
     global mymap
-    mymap.draw('./Output.html')
+    mymap.draw('.\Output.html')
 
 def main():
   print "Gathering all Critical Blocks..."
@@ -44,7 +44,7 @@ def main():
   draw()
   print "Map file prepared"
   dir_path = os.getcwd()
-  url = 'file:///'+dir_path+'/Output.html'
+  url = 'file:///'+dir_path+'\Output.html'
   webbrowser.open(url)
 
 if __name__ == '__main__':
