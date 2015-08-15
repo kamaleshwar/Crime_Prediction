@@ -7,6 +7,7 @@ import shutil
 files = []
 target_dir = "Normalized_Data"
 source = "Blocks"
+path_sep = os.path.sep
 
 Theft_max = {}
 Theft_min = {}
@@ -26,7 +27,7 @@ def get_max_min():
         files = os.listdir(source)
 
     for each_file in files:
-        fr = open(source+"\\"+each_file,"rb")
+        fr = open(source+path_sep+each_file,"rb")
         file_reader = csv.reader(fr)
         num_theft_max = 0
         num_theft_min = 0
@@ -77,7 +78,7 @@ def Normalize():
         files = os.listdir(source)
 
     for each_file in files:
-        fr = open(source+"\\"+each_file,"rb")
+        fr = open(source+path_sep+each_file,"rb")
         file_reader = csv.reader(fr)
         for row in file_reader:
             one_row = []
@@ -105,7 +106,7 @@ def Normalize():
             else:
                 one_row.append((int(row[8])))
 
-            fw = open(target_dir+"\\"+each_file,"ab")
+            fw = open(target_dir+path_sep+each_file,"ab")
             file_writer = csv.writer(fw)
             file_writer.writerow(one_row)
 
