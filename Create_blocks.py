@@ -74,8 +74,10 @@ def Create_blocks():
     if(not os.path.isdir(target_dir)):
         os.mkdir(target_dir)
 
+    path_sep = os.path.sep
+
     for each_block in blocks.keys():
-        fw = open(target_dir+"\\"+each_block+".csv","ab")
+        fw = open(target_dir+path_sep+each_block+".csv","ab")
         write = csv.writer(fw)
         #write.writerow(Titles)
         max_theft = 0
