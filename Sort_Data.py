@@ -6,6 +6,7 @@ import shutil
 date = datetime.datetime.now()
 
 source = 'Normalized_Data'
+path_sep = os.path.sep
 
 months = ['January', 'February','March','April','May','June','July','August','September','October','November','December']
 
@@ -15,8 +16,11 @@ block_tmp = {}
 months_year ={}
 
 test= ""
+min_year = 2013
+max_year = 2016
 
 target_dir = 'Sorted_data_set'
+
 
 fr = open('Weather_details.csv',"rb")
 reader = csv.reader(fr)
@@ -42,7 +46,7 @@ def Sort_Data():
         files = os.listdir(source)
     for file in files:
         block = {}
-        fr = open(source+"\\"+file,"rb")
+        fr = open(source+path_sep+file,"rb")
         file_reader = csv.reader(fr)
         for row in file_reader:
             key = row[0]+":"+row[1]
@@ -50,7 +54,7 @@ def Sort_Data():
 
         key_val = ""
 
-        for year in range(2013,2016):
+        for year in range(min_year,max_year):
             for month in months:
                 check = date.strftime("%B")+":"+date.strftime("%Y")
                 key_val = month+":"+str(year)
@@ -83,7 +87,7 @@ def write_to_File(info_map,file_name):
     if(not os.path.isdir(target_dir)):
         os.mkdir(target_dir)
 
-    fw = open(target_dir+"\\"+file_name,"ab")
+    fw = open(target_dir+path_sep+file_name,"ab")
     wr = csv.writer(fw)
 
     for row in info_map.values():
